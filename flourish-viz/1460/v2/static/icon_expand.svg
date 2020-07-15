@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="21px" height="18px" viewBox="0 0 21 18" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 51 (57462) - http://www.bohemiancoding.com/sketch -->
+    <title>Group 3</title>
+    <desc>Created with Sketch.</desc>
+    <defs></defs>
+    <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="Group-3">
+            <rect id="Rectangle-6" fill-opacity="0.01" fill="#E3E3E3" x="0" y="0" width="21" height="18" rx="3"></rect>
+            <polyline id="Path-2" stroke="#000000" stroke-width="1.5" stroke-linecap="square" points="6.52246094 7.24658203 10.4494629 3.81958008 14.3764648 7.24658203"></polyline>
+            <polyline id="Path-2-Copy" stroke="#000000" stroke-width="1.5" stroke-linecap="square" transform="translate(10.449463, 12.533081) rotate(-180.000000) translate(-10.449463, -12.533081) " points="6.52246094 14.246582 10.4494629 10.8195801 14.3764648 14.246582"></polyline>
+        </g>
+    </g>
+</svg>
