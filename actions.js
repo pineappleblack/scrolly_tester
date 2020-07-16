@@ -13,7 +13,7 @@
  // generic window resize listener event
  function handleResize() {
      // 1. update height of step elements
-     var stepH = Math.floor(window.innerHeight * 0.95);
+     var stepH = Math.floor(window.innerHeight * 0.7);
      step.style("height", stepH + "px");
 
      var figureHeight = window.innerHeight;
@@ -31,17 +31,11 @@
  function handleStepEnter(response) {
      console.log(response);
      // response = { element, direction, index }
-
-     // add color to current step only
-     step.classed("is-active", function (d, i) {
-         return i === response.index;
-     });
-
-     // update graphic based on step
-     figure.select("p").text(response.index + 1);
+     
      
      var iframe = document.querySelector("#scrolly iframe");
-     iframe.src = iframe.src.replace(/#slide-.*/, "") + "#slide-" + response.index;
+     slide_num = response.index + 1
+     iframe.src = iframe.src.replace(/#slide-.*/, "") + "#slide-" + slide_num;
      
      
  }
@@ -65,8 +59,8 @@
      scroller
          .setup({
              step: "#scrolly article .step",
-             offset: 1,
-             debug: true,
+             offset: 0.5,
+             debug: false,
          })
          .onStepEnter(handleStepEnter);
     
