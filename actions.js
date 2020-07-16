@@ -12,32 +12,31 @@
 
  // generic window resize listener event
  function handleResize() {
-     // 1. update height of step elements
-     var stepH = Math.floor(window.innerHeight * 0.7);
-     step.style("height", stepH + "px");
 
-     var figureHeight = window.innerHeight;
-     var figureMarginTop = (window.innerHeight - figureHeight);
+    
+    // 1. update height of step elements
+    var stepH = Math.floor(window.innerHeight * 0.7);
+    step.style("height", stepH + "px");
 
-     figure.style("height", figureHeight + "px").style("top", figureMarginTop + "px");
+    frame = d3.select(".flourish-embed iframe")
+    if (frame.node() !== null) {
+        var figureHeight = frame.node().getBoundingClientRect().height;
+        var figureMarginTop = (window.innerHeight - figureHeight) / 2;
 
-     // 3. tell scrollama to update new element dimensions
-     scroller.resize();
+        figure.style("height", figureHeight + "px").style("top", figureMarginTop + "px");
 
-     
+        // 3. tell scrollama to update new element dimensions
+        scroller.resize();
+    }
  }
 
  // scrollama event handlers
  function handleStepEnter(response) {
-     console.log(response);
      // response = { element, direction, index }
-     
      
      var iframe = document.querySelector("#scrolly iframe");
      slide_num = response.index + 1
      iframe.src = iframe.src.replace(/#slide-.*/, "") + "#slide-" + slide_num;
-     
-     
  }
 
  function setupStickyfill() {
@@ -66,6 +65,26 @@
     
      // setup resize event
      window.addEventListener("resize", handleResize);
+
+    var checkCreditExist = setInterval(function() {
+        credit = d3.select(".flourish-credit")
+        if (credit !== 'null') {
+           credit.remove()
+           clearInterval(checkCreditExist)
+        }
+     }, 100); // check every 100ms
+
+     var checkIframeExist = setInterval(function() {
+        frame = d3.select(".flourish-embed iframe")
+        if (credit !== 'null') {
+            var figureHeight = frame.node().getBoundingClientRect().height;
+            var figureMarginTop = (window.innerHeight - figureHeight) / 2;
+
+            figure.style("height", figureHeight + "px").style("top", figureMarginTop + "px");
+            scroller.resize();
+            clearInterval(checkIframeExist)
+        }
+     }, 100); // check every 100ms
  }
 
  // kick things off
